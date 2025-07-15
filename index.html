@@ -3,38 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Menu Page</title>
-    <link rel="stylesheet" href="style2.css">
+    <title>Video Intro & Menu</title>
+    <link rel="stylesheet" href="style4.css">
 </head>
 <body>
 
-    <video id="intro-video" src="PT AP2_20250715.mp4" autoplay muted playsinline></video>
+    <video id="intro-video" autoplay muted playsinline>
+        <source src="PT AP2_20250715.mp4" type="video/mp4">
+        お使いのブラウザはビデオ再生に対応していません。
+    </video>
 
-    <nav id="main-menu" class="menu" style="visibility: hidden;">
+    <nav class="menu" id="main-menu">
         <ol>
-            <li class="menu-item"><a href="https://outlook.office.com/calendar/view/month" target="_blank">Acct. Schedule</a></li>
-            <li class="menu-item"><a href="https://0505toto.github.io/PAD3/" target="_blank">Acct. Portal</a></li>
+            <li class="menu-item"><a href="https://outlook.office.com/calendar/view/month" target="_blank" rel="noopener noreferrer">Acct. Schedule</a></li>
+            <li class="menu-item"><a href="https://0505toto.github.io/PAD3/" target="_blank" rel="noopener noreferrer">Acct. Portal</a></li>
             <li class="menu-item">
-                <a href="https://hz6n32v7pq52.cybozu.com/g/portal/index.csp?pid=2" target="_blank">Garoon</a>
+                <a href="https://hz6n32v7pq52.cybozu.com/g/portal/index.csp?pid=2" target="_blank" rel="noopener noreferrer">Garoon</a>
                 <ol class="sub-menu">
-                    <li class="menu-item"><a href="https://hz6n32v7pq52.cybozu.com/g/schedule/index.csp?" target="_blank">Schedule</a></li>
-                    <li class="menu-item"><a href="https://hz6n32v7pq52.cybozu.com/g/schedule/facility_index.csp?" target="_blank">MR Reservation【施設予約】</a></li>
-                    <li class="menu-item"><a href="https://hz6n32v7pq52.cybozu.com/g/address/index.csp?" target="_blank">Address Book</a></li>
+                    <li class="menu-item"><a href="https://hz6n32v7pq52.cybozu.com/g/schedule/index.csp?" target="_blank" rel="noopener noreferrer">Schedule</a></li>
+                    <li class="menu-item"><a href="https://hz6n32v7pq52.cybozu.com/g/schedule/facility_index.csp?" target="_blank" rel="noopener noreferrer">MR Reservation【施設予約】</a></li>
+                    <li class="menu-item"><a href="https://hz6n32v7pq52.cybozu.com/g/address/index.csp?" target="_blank" rel="noopener noreferrer">Address Book</a></li>
                 </ol>
             </li>
             <li class="menu-item">
                 <a href="#0">Banks</a>
                 <ol class="sub-menu">
-                    <li class="menu-item"><a href="https://corporate.bk.mufg.jp/frontend/auth" target="_blank">MUFG Bank</a></li>
-                    <li class="menu-item"><a href="https://www.b-direct.resonabank.co.jp/0010c/rblgi01/I1RBLGI01-S01.do?lin=modal&_gl=1*3gox0b*_gcl_au*MjA4NTYwMjE4MC4xNzIxODc0NjAy&_ga=2.10924465.445256254.1722230727-259278251.1721874602" target="_blank">Resona Bank</a></li>
-                    <li class="menu-item"><a href="https://www.smbc.co.jp/hojin/eb/web21/" target="_blank">SMBC</a></li>
+                    <li class="menu-item"><a href="https://corporate.bk.mufg.jp/frontend/auth" target="_blank" rel="noopener noreferrer">MUFG Bank</a></li>
+                    <li class="menu-item"><a href="https://www.b-direct.resonabank.co.jp/0010c/rblgi01/I1RBLGI01-S01.do" target="_blank" rel="noopener noreferrer">Resona Bank</a></li>
+                    <li class="menu-item"><a href="https://www.smbc.co.jp/hojin/eb/web21/" target="_blank" rel="noopener noreferrer">SMBC</a></li>
                 </ol>
             </li>
-            <li class="menu-item"><a href="https://business.getmoneytree.com/" target="_blank">Moneytree Business</a></li>
+            <li class="menu-item"><a href="https://business.getmoneytree.com/" target="_blank" rel="noopener noreferrer">Moneytree Business</a></li>
         </ol>
     </nav>
 
-    <script src="script3.js" defer></script>
+    <script src="script4.js"></script>
 
 </body>
 </html>
