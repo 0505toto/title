@@ -149,7 +149,7 @@ Fx
 */
 
 /* ▼▼▼ この transition でホバー時の動きを制御 ▼▼▼ */
-.menu { transition:transform 0.3s; }
+.menu { transition:transform 0.8s; }
 .menu:hover { transform:rotate(0); }
 
 .menu::before { transition:transform 0.5s; }
@@ -195,8 +195,8 @@ Collapse
 .menu:hover .sub-menu .menu-item {
   max-height:10em;
   transform:scaleY(1);
-  /* 開く時は0.3秒待ってから、0.5秒かけて開く */
-  transition:transform 0.5s 0.3s, max-height 0.5s 0.3s;
+  /* ↓↓↓ 遅延時間を、メインメニューの回転時間と同じ0.8秒に合わせる */
+  transition:transform 0.5s 0.8s, max-height 0.5s 0.8s;
 }
 
 .menu:hover .sub-menu .menu-item {
