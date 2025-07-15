@@ -11,15 +11,17 @@
     z-index: 10; /* 他の要素より手前に表示 */
 }
 
-/* メニューの初期状態（非表示）とアニメーション設定 */
+/* メニューの初期状態と、すべてのアニメーション設定をここに統合 */
 #main-menu {
-    /* display:flex は元の .menu クラスから継承されるため不要 */
     opacity: 0; /* 透明にする */
     filter: blur(5px); /* ぼかす */
     pointer-events: none; /* クリックできないようにする */
     
-    /* ふわっと表示されるアニメーション（transformを含めない） */
-    transition: opacity 0.8s ease-out, filter 0.8s ease-out;
+    /* ふわっと表示と回転の動きをここに統合し、速度を0.8秒に設定 */
+    transition: 
+        opacity 0.8s ease-out, 
+        filter 0.8s ease-out, 
+        transform 0.8s ease-out;
 }
 
 /* JavaScriptによって .is-visible クラスが追加されたときのメニューの状態 */
@@ -124,7 +126,6 @@ Main menu
   flex-flow:column nowrap;
   font:bold 2.4rem/1 'IM Fell English SC', serif;
   position:relative;
-  /* ▼▼▼ この transform で初期の傾きを制御 ▼▼▼ */
   transform:rotate(-30deg);
 }
 
@@ -148,8 +149,8 @@ Main menu
 Fx
 */
 
-/* ▼▼▼ この transition でホバー時の動きを制御 ▼▼▼ */
-.menu { transition:transform 0.8s; }
+/* 古い設定は削除し、#main-menuに統合済み */
+
 .menu:hover { transform:rotate(0); }
 
 .menu::before { transition:transform 0.5s; }
@@ -182,7 +183,7 @@ Fx
 Collapse
 */
 
-/* ▼▼▼ サブメニューの【閉じる時】のスタイルと速度を定義 ▼▼▼ */
+/* サブメニューの【閉じる時】のスタイルと速度を定義 */
 .sub-menu > .menu-item {
   max-height:1ch;
   transform:scaleY(0.1);
@@ -191,15 +192,10 @@ Collapse
   transition:transform 0.3s, max-height 0.3s;
 }
 
-/* ▼▼▼ サブメニューの【開く時】のスタイルと速度を定義 ▼▼▼ */
+/* サブメニューの【開く時】のスタイルと速度を定義 */
 .menu:hover .sub-menu .menu-item {
   max-height:10em;
   transform:scaleY(1);
-  /* ↓↓↓ 遅延時間を、メインメニューの回転時間と同じ0.8秒に合わせる */
+  /* メインメニューの回転(0.8s)が終わってから開くように遅延を設定 */
   transition:transform 0.5s 0.8s, max-height 0.5s 0.8s;
-}
-
-.menu:hover .sub-menu .menu-item {
-  max-height:10em;
-  transform:scaleY(1);
 }
