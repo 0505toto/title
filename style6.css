@@ -186,7 +186,7 @@ Collapse
   max-height:1ch;
   transform:scaleY(0.1);
   transform-origin:center top;
-  transition:transform 0.2s, max-height 0.5s;
+  transition:transform 0.4s, max-height 0.7s;
 }
 
 .menu:hover .sub-menu .menu-item {
