@@ -2,33 +2,33 @@
 
 /* ビデオを全画面に表示するためのスタイル */
 #intro-video {
-    position: fixed; /* 画面に固定 */
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100vw; /* 画面の幅いっぱいに */
-    height: 100vh; /* 画面の高さいっぱいに */
-    object-fit: cover; /* アスペクト比を保ったまま全画面を覆う */
-    z-index: 10; /* 他の要素より手前に表示 */
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 10;
 }
 
 /* メニューの初期状態と、すべてのアニメーション設定をここに統合 */
 #main-menu {
-    opacity: 0; /* 透明にする */
-    filter: blur(5px); /* ぼかす */
-    pointer-events: none; /* クリックできないようにする */
+    opacity: 0;
+    filter: blur(5px);
+    pointer-events: none;
     
-    /* ふわっと表示と回転の動きをここに統合し、速度を0.8秒に設定 */
     transition: 
         opacity 0.8s ease-out, 
         filter 0.8s ease-out, 
-        transform 0.8s ease-out;
+        /* 閉じる時に0.3秒待ってから回転するよう設定 */
+        transform 0.8s ease-out 0.3s;
 }
 
 /* JavaScriptによって .is-visible クラスが追加されたときのメニューの状態 */
 #main-menu.is-visible {
-    opacity: 1; /* 透明度を戻す */
-    filter: blur(0); /* ぼかしをなくす */
-    pointer-events: auto; /* クリックできるようにする */
+    opacity: 1;
+    filter: blur(0);
+    pointer-events: auto;
 }
 
 
@@ -40,8 +40,7 @@
   font-size:0.625em;
 }
 
-/* layout
-*/
+/* layout */
 html,body {min-height:100vh}
 body {
   display:flex;
@@ -50,31 +49,21 @@ body {
   align-items:center;
 }
 
-
-
-/* Counters 
-*/
-
+/* Counters */
 .menu ol { 
   counter-reset:menu;
 }
 
-
-
-/*
-Regular menu items
-*/
-
+/* Regular menu items */
 .menu-item a {
   display:flex;
-  justify-content:flex-start; /*shrink towards text*/
+  justify-content:flex-start;
   color:currentColor;
   text-decoration:none;
-  padding:0.3rem 0; /* avoid flickin' */
+  padding:0.3rem 0;
   order:0;
 }
-
-.menu-item a::before { /* dots */
+.menu-item a::before {
   content:"";
   display:block;
   border-bottom:1px dotted black;
@@ -83,8 +72,7 @@ Regular menu items
   margin:0 1rem;
   order:1;
 }
-
-.menu-item a::after { /* item ids */
+.menu-item a::after {
   counter-increment:menu;
   content:counters(menu, ".");
   flex:0 0 auto;
@@ -93,32 +81,18 @@ Regular menu items
   text-decoration:underline;
 }
 
-
-
-/* Sub menu & items
-*/
-
+/* Sub menu & items */
 .sub-menu {
   font-size:1.6rem;
   font-weight:normal;
 }
-
 .sub-menu > li > a {
-  text-indent:0ch; /*
-    Chrome indentS the "dots" elm, i.e. it counts pseudo-elm. 
-    FF and Edge indents first non pseudo-elm.  
-    Turn it off for consistency.
-  */
+  text-indent:0ch;
   padding:0.5rem 0 0.5rem 2ch;
   margin:0;
 }
 
-
-
-/*
-Main menu
-*/
-
+/* Main menu */
 .menu {
   width:22vw;
   min-width:20ch;
@@ -128,14 +102,12 @@ Main menu
   position:relative;
   transform:rotate(-30deg);
 }
-
 .menu::before {
   content:"/";
   align-self:center;
   transform:rotate(30deg);
   margin-bottom:1rem;
 }
-
 .menu::after {
   content:"/";
   align-self:center;
@@ -143,47 +115,34 @@ Main menu
   margin-top:1rem;
 }
 
-
-
-/*
-Fx
-*/
-
-/* 古い設定は削除し、#main-menuに統合済み */
-
-.menu:hover { transform:rotate(0); }
-
+/* Fx */
+.menu:hover { 
+  transform:rotate(0);
+  /* 開く時は遅延なく回転を開始するよう設定 */
+  transition: transform 0.8s ease-out;
+}
 .menu::before { transition:transform 0.5s; }
 .menu:hover::before { transform:rotate(0); content:"__"; }
 .menu::after { transition:transform 0.5s; }
 .menu:hover::after { transform:rotate(0); content:"__"; }
-
 .menu .menu-item a::after { transition:transform 0.3s }
 .menu:hover .menu-item a::after { transform:rotate(0) }
-
 .menu:hover > ol > .menu-item { opacity:0.3; }
-
 .menu-item:hover {
   transition:background-color 0.3s;
   background:rgba(255,255,0,0.15);
   opacity:1 !important;
 }
-
 .menu-item:hover a::after {
   text-decoration:none;
 }
-
 .menu-item:hover > a::before {
   transition:flex-grow 0.3s;
   width:0; flex-grow:0;
   transform-origin:center bottom;
 }
 
-/*
-Collapse
-*/
-
-/* サブメニューの【閉じる時】のスタイルと速度を定義 */
+/* Collapse */
 .sub-menu > .menu-item {
   max-height:1ch;
   transform:scaleY(0.1);
@@ -191,8 +150,6 @@ Collapse
   /* 閉じる時は遅延なく、0.3秒で閉じる */
   transition:transform 0.3s, max-height 0.3s;
 }
-
-/* サブメニューの【開く時】のスタイルと速度を定義 */
 .menu:hover .sub-menu .menu-item {
   max-height:10em;
   transform:scaleY(1);
