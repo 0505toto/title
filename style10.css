@@ -21,7 +21,7 @@
         opacity 0.8s ease-out, 
         filter 0.8s ease-out, 
         /* 閉じる時に0.3秒待ってから回転するよう設定 */
-        transform 0.8s ease-out 0.3s;
+        transform 0.5s ease-out 0.8s;
 }
 
 /* JavaScriptによって .is-visible クラスが追加されたときのメニューの状態 */
@@ -119,7 +119,7 @@ body {
 .menu:hover { 
   transform:rotate(0);
   /* 開く時は遅延なく回転を開始するよう設定 */
-  transition: transform 0.8s ease-out;
+  transition: transform 0.5s ease-out;
 }
 .menu::before { transition:transform 0.5s; }
 .menu:hover::before { transform:rotate(0); content:"__"; }
@@ -148,11 +148,11 @@ body {
   transform:scaleY(0.1);
   transform-origin:center top;
   /* 閉じる時は遅延なく、0.3秒で閉じる */
-  transition:transform 0.3s, max-height 0.3s;
+  transition:transform 0.5s, max-height 0.5s;
 }
 .menu:hover .sub-menu .menu-item {
   max-height:10em;
   transform:scaleY(1);
   /* メインメニューの回転(0.8s)が終わってから開くように遅延を設定 */
-  transition:transform 0.5s 0.8s, max-height 0.5s 0.8s;
+  transition:transform 0.8s 0.5s, max-height 0.5s 0.8s;
 }
