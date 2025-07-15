@@ -21,7 +21,7 @@
         opacity 0.8s ease-out, 
         filter 0.8s ease-out, 
         /* 閉じる時に0.3秒待ってから回転するよう設定 */
-        transform 0.5s ease-out 0.8s;
+        transform 0.5s ease-out 0.3s;
 }
 
 /* JavaScriptによって .is-visible クラスが追加されたときのメニューの状態 */
