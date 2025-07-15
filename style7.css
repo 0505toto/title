@@ -182,11 +182,21 @@ Fx
 Collapse
 */
 
+/* ▼▼▼ サブメニューの【閉じる時】のスタイルと速度を定義 ▼▼▼ */
 .sub-menu > .menu-item {
   max-height:1ch;
   transform:scaleY(0.1);
   transform-origin:center top;
-  transition:transform 0.4s, max-height 0.7s;
+  /* 閉じる時は遅延なく、0.3秒で閉じる */
+  transition:transform 0.3s, max-height 0.3s;
+}
+
+/* ▼▼▼ サブメニューの【開く時】のスタイルと速度を定義 ▼▼▼ */
+.menu:hover .sub-menu .menu-item {
+  max-height:10em;
+  transform:scaleY(1);
+  /* 開く時は0.3秒待ってから、0.5秒かけて開く */
+  transition:transform 0.5s 0.3s, max-height 0.5s 0.3s;
 }
 
 .menu:hover .sub-menu .menu-item {
