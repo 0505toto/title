@@ -13,19 +13,19 @@
 
 /* メニューの初期状態（非表示）とアニメーション設定 */
 #main-menu {
-    display: flex; /* アニメーションのために display は flex のままにする */
+    /* display:flex は元の .menu クラスから継承されるため不要 */
     opacity: 0; /* 透明にする */
     filter: blur(5px); /* ぼかす */
-    transform: scale(0.95); /* 少し小さくしておく */
     pointer-events: none; /* クリックできないようにする */
-    transition: opacity 0.8s ease-out, filter 0.8s ease-out, transform 0.8s ease-out; /* アニメーション設定 */
+    
+    /* ふわっと表示されるアニメーション（transformを含めない） */
+    transition: opacity 0.8s ease-out, filter 0.8s ease-out;
 }
 
 /* JavaScriptによって .is-visible クラスが追加されたときのメニューの状態 */
 #main-menu.is-visible {
     opacity: 1; /* 透明度を戻す */
     filter: blur(0); /* ぼかしをなくす */
-    transform: scale(1); /* 元のサイズに戻す */
     pointer-events: auto; /* クリックできるようにする */
 }
 
@@ -124,6 +124,7 @@ Main menu
   flex-flow:column nowrap;
   font:bold 2.4rem/1 'IM Fell English SC', serif;
   position:relative;
+  /* ▼▼▼ この transform で初期の傾きを制御 ▼▼▼ */
   transform:rotate(-30deg);
 }
 
@@ -147,6 +148,7 @@ Main menu
 Fx
 */
 
+/* ▼▼▼ この transition でホバー時の動きを制御 ▼▼▼ */
 .menu { transition:transform 0.3s; }
 .menu:hover { transform:rotate(0); }
 
